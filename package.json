@@ -1,0 +1,21 @@
+{
+  "name": "compressly",
+  "version": "1.0.0",
+  "description": "A Telegram bot built with TypeScript and the Telegraf library to compress PDFs and images.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "Younes Fallahi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
