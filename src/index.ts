@@ -6,7 +6,7 @@ dotenv.config();
 
 async function main() {
   try {
-    await startBot();
+    startBot();
   } catch (err) {
     console.log(err);
   }

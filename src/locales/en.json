@@ -1,0 +1,11 @@
+{
+  "start": "please select",
+  "start_message": "Welcome! Please select your preferred language.",
+  "language_changed": "Your language has been set to English.",
+  "compress_pdf": "Send me a PDF file to compress.",
+  "compress_image": "Send me an image file to compress.",
+  "pdf-btn": "Compress PDF",
+  "image-btn": "Compress Image",
+  "contact-btn": "ارتباط با ما",
+  "language-btn": "تغییر زبان"
+}
