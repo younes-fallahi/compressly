@@ -1,7 +1,8 @@
 import { Context } from "telegraf";
 import { createUser, getUser } from "../services/userService";
+import { MyContext } from "../types/custom-context";
 
-export const start = async (ctx: Context) => {
+export const start = async (ctx: MyContext) => {
   try {
     if (ctx.chat?.type === "private") {
       const chatId = ctx.chat.id.toString();
@@ -15,7 +16,6 @@ export const start = async (ctx: Context) => {
       }
 
       // check the user prefered language
-
       // the main keyboard
     }
   } catch (error) {

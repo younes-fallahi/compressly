@@ -6,3 +6,6 @@ logs/
 
 # Environment variable file
 .env
+
+# Build output
+/dist/
