@@ -5,6 +5,7 @@ import { errorHandler } from "./middlewares/errorHandler";
 import logger from "./utils/logger";
 import { MyContext } from "./types/custom-context";
 import { addPolyglot } from "./middlewares/addPolyglot";
+import { queryHandler } from "./handlers/queryHandler";
 dotenv.config();
 
 export async function startBot() {
@@ -16,6 +17,9 @@ export async function startBot() {
 
   // commands
   bot.command("start", start);
+
+  // handlers
+  bot.on("callback_query", queryHandler);
 
   bot.launch(() => {
     logger.info("bot has been launched !");

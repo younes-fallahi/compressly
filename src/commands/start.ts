@@ -1,6 +1,7 @@
 import { Context } from "telegraf";
 import { createUser, getUser } from "../services/userService";
 import { MyContext } from "../types/custom-context";
+import { mainKeyboard } from "../keyboards/main";
 
 export const start = async (ctx: MyContext) => {
   try {
@@ -16,7 +17,10 @@ export const start = async (ctx: MyContext) => {
       }
 
       // check the user prefered language
-      // the main keyboard
+     
+      if (ctx.polyglot) {
+        ctx.reply(ctx.polyglot.t("welcome"), mainKeyboard(ctx.polyglot));
+      }
     }
   } catch (error) {
     console.log(error);
