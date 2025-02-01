@@ -1,7 +1,8 @@
 import { Context } from "telegraf";
 import { createUser, getUser } from "../services/userService";
 import { MyContext } from "../types/custom-context";
-import { mainKeyboard } from "../keyboards/main";
+import { mainKeyboard } from "../keyboards/mainKeyboard.ts";
+import { languageKeyboard } from "../keyboards/languageKeyBoard";
 
 export const start = async (ctx: MyContext) => {
   try {
@@ -14,12 +15,11 @@ export const start = async (ctx: MyContext) => {
         const name = ctx.chat.first_name || "";
         const username = ctx.chat.first_name || "";
         createUser(chatId, name, username);
-      }
-
-      // check the user prefered language
-     
-      if (ctx.polyglot) {
-        ctx.reply(ctx.polyglot.t("welcome"), mainKeyboard(ctx.polyglot));
+        ctx.reply("Please select your language : ", languageKeyboard());
+      } else {
+        if (ctx.polyglot) {
+          ctx.reply(ctx.polyglot.t("welcome"), mainKeyboard(ctx.polyglot));
+        }
       }
     }
   } catch (error) {
