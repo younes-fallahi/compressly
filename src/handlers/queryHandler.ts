@@ -9,6 +9,7 @@ export const queryHandler = async (ctx: MyContext) => {
   const queryData = callbackQuery.data;
   await ctx.answerCbQuery();
   ctx.deleteMessage();
+
   const chatId = ctx.chat?.id.toString();
   try {
     if (chatId) {
@@ -23,6 +24,12 @@ export const queryHandler = async (ctx: MyContext) => {
           break;
         case "change_language":
           ctx.reply("Please select your language : ", languageKeyboard());
+          break;
+        case "compressPdf":
+          ctx.reply(ctx.polyglot?.t("askForPdf") || "");
+          break;
+        case "compressImage":
+          ctx.reply(ctx.polyglot?.t("askForImage") || "");
           break;
         default:
           break;

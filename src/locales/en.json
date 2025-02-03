@@ -1,6 +1,8 @@
 {
-  "welcome": "welcome to compressly",
+  "mainKeyboard": "How can I help you?",
   "pdf-btn": "compress pdf",
   "img-btn": "compress image",
-  "change-language": "change language"
+  "change-language": "change language",
+  "askForPdf": "pdfen",
+  "askForImage": "Please send me an image file. It must be in .jpg (JPEG) or .png format.\n\n❗️PNG images must be sent as files, not as photos.\n If PNG files are sent as images, they will be converted to .jpg automatically by Telegram."
 }

@@ -15,10 +15,13 @@ export const start = async (ctx: MyContext) => {
         const name = ctx.chat.first_name || "";
         const username = ctx.chat.first_name || "";
         createUser(chatId, name, username);
-        ctx.reply("Please select your language : ", languageKeyboard());
+        ctx.reply(
+          "Welcome to Compressly,\n 🌎Please select you preferred langauge:",
+          languageKeyboard()
+        );
       } else {
         if (ctx.polyglot) {
-          ctx.reply(ctx.polyglot.t("welcome"), mainKeyboard(ctx.polyglot));
+          ctx.reply(ctx.polyglot.t("mainKeyboard"), mainKeyboard(ctx.polyglot));
         }
       }
     }
