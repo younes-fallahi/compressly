@@ -9,3 +9,6 @@ logs/
 
 # Build output
 /dist/
+
+# temp files
+/tmp
