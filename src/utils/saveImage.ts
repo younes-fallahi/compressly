@@ -1,9 +1,9 @@
 import path from "path";
 import { Message } from "telegraf/types";
-import { MyContext } from "../../types/custom-context";
-import { downloadFile } from "../downloadFile";
+import { MyContext } from "../types/custom-context";
+import { downloadFile } from "./downloadFile";
 
-const TEMP_DIR = path.join(__dirname, "../../../tmp");
+const TEMP_DIR = path.join(__dirname, "../../tmp");
 
 export const saveImage = async (ctx: MyContext) => {
   try {
@@ -25,7 +25,7 @@ export const saveImage = async (ctx: MyContext) => {
     const file = await ctx.telegram.getFile(fileId);
     const fileUrl = `https://api.telegram.org/file/bot${process.env.BOT_TOKEN}/${file.file_path} `;
 
-    const filePath = path.join(TEMP_DIR, `images/input/${chatId}.jpg`);
+    const filePath = path.join(TEMP_DIR, `image/input/${chatId}.jpg`);
     await downloadFile(fileUrl, filePath);
   } catch (error) {
     console.log(error);

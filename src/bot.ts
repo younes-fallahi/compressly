@@ -6,7 +6,8 @@ import logger from "./utils/logger";
 import { MyContext } from "./types/custom-context";
 import { addPolyglot } from "./middlewares/addPolyglot";
 import { queryHandler } from "./handlers/queryHandler";
-import { saveImage } from "./utils/image-utils/saveImage";
+import { saveImage } from "./utils/saveImage";
+import { saveFile } from "./utils/saveFile";
 dotenv.config();
 
 export async function startBot() {
@@ -22,6 +23,7 @@ export async function startBot() {
   // handlers
   bot.on("callback_query", queryHandler);
   bot.on("photo", saveImage);
+  bot.on("document", saveFile);
 
   bot.launch(() => {
     logger.info("bot has been launched !");
