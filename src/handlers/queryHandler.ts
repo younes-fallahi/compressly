@@ -34,13 +34,13 @@ export const queryHandler = async (ctx: MyContext) => {
           ctx.reply(ctx.polyglot?.t("askForImage") || "");
           break;
         case "CH-QL":
-          compress(ctx, 25);
+          await compress(ctx, 25);
           break;
         case "CM-QM":
-          compress(ctx, 50);
+          await compress(ctx, 50);
           break;
         case "CL-QH":
-          compress(ctx, 75);
+          await compress(ctx, 75);
           break;
         default:
           break;

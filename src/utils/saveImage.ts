@@ -16,6 +16,10 @@ export const saveImage = async (ctx: MyContext) => {
       return;
     }
 
+    if (!ctx.polyglot) {
+      return;
+    }
+
     const photoArray = message.photo;
     if (!photoArray) {
       return;
@@ -28,11 +32,10 @@ export const saveImage = async (ctx: MyContext) => {
     const fileUrl = `https://api.telegram.org/file/bot${process.env.BOT_TOKEN}/${file.file_path} `;
 
     const filePath = path.join(TEMP_DIR, `image/input/${chatId}.jpg`);
+    const statusMessage = await ctx.reply(ctx.polyglot?.t("downloading"));
     await downloadFile(fileUrl, filePath);
+    await ctx.deleteMessage(statusMessage.message_id);
 
-    if (!ctx.polyglot) {
-      return;
-    }
     ctx.reply(
       ctx.polyglot?.t("askForCQlevel"),
       qualityCompressionKeyboard(ctx)

@@ -14,6 +14,10 @@ export const saveFile = async (ctx: MyContext) => {
     if (!chatId) {
       return;
     }
+
+    if (!ctx.polyglot) {
+      return;
+    }
     const document = message.document;
     if (!document || !document.mime_type) {
       return;
@@ -34,10 +38,14 @@ export const saveFile = async (ctx: MyContext) => {
 
     if (mimeType === "image/png") {
       filePath = path.join(TEMP_DIR, `image/input/${chatId}.png`);
+      const statusMessage = await ctx.reply(ctx.polyglot?.t("downloading"));
       await downloadFile(fileUrl, filePath);
+      await ctx.deleteMessage(statusMessage.message_id);
     } else if (mimeType === "application/pdf") {
       filePath = path.join(TEMP_DIR, `pdf/input/${chatId}.pdf`);
+      const statusMessage = await ctx.reply(ctx.polyglot?.t("downloading"));
       await downloadFile(fileUrl, filePath);
+      await ctx.deleteMessage(statusMessage.message_id);
     } else {
       ctx.reply("Unsupported file type");
       return;

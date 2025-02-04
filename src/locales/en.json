@@ -8,5 +8,8 @@
   "askForCQlevel": "Please select your compression and quality level : ",
   "CL-QH": "Low Compression , High Quality",
   "CM-QM": "Medium Compression , Medium Quality",
-  "CH-QL": "High Compression , Low Quality"
+  "CH-QL": "High Compression , Low Quality",
+  "downloading": "Downloading...",
+  "compressing": "Compressing...",
+  "uploading": "Uploading..."
 }
