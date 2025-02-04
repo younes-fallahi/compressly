@@ -3,6 +3,7 @@ import { MyContext } from "../types/custom-context";
 import { changeLanguage } from "../services/userService";
 import { start } from "../commands/start";
 import { languageKeyboard } from "../keyboards/languageKeyBoard";
+import { compress } from "./compression";
 
 export const queryHandler = async (ctx: MyContext) => {
   const callbackQuery = ctx.callbackQuery as CallbackQueryType.DataQuery;
@@ -30,6 +31,15 @@ export const queryHandler = async (ctx: MyContext) => {
           break;
         case "compressImage":
           ctx.reply(ctx.polyglot?.t("askForImage") || "");
+          break;
+        case "CH-QL":
+          compress(ctx, 25);
+          break;
+        case "CM-QM":
+          compress(ctx, 50);
+          break;
+        case "CL-QH":
+          compress(ctx, 75);
           break;
         default:
           break;

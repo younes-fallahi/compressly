@@ -2,7 +2,7 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-export const compressWithSharp = async (
+export const compressImage = async (
   inputFile: string,
   outputFile: string,
   quality: number,
