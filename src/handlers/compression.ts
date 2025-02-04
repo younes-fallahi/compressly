@@ -3,6 +3,7 @@ import fs from "fs";
 import { MyContext } from "../types/custom-context";
 import { compressImage } from "../services/sharp";
 import { compressPdf } from "../services/ghostscript";
+import logger from "../utils/logger";
 
 const PDF_DIR = path.join(__dirname, "../../tmp/pdf");
 const IMAGE_DIR = path.join(__dirname, "../../tmp/image/");
@@ -40,6 +41,6 @@ export const compress = async (ctx: MyContext, quality: number) => {
       await fs.promises.unlink(outputPath);
     }
   } catch (error) {
-    console.log(error);
+    logger.error((error as Error).message);
   }
 };

@@ -4,6 +4,7 @@ import { changeLanguage } from "../services/userService";
 import { start } from "../commands/start";
 import { languageKeyboard } from "../keyboards/languageKeyBoard";
 import { compress } from "./compression";
+import logger from "../utils/logger";
 
 export const queryHandler = async (ctx: MyContext) => {
   const callbackQuery = ctx.callbackQuery as CallbackQueryType.DataQuery;
@@ -46,6 +47,6 @@ export const queryHandler = async (ctx: MyContext) => {
       }
     }
   } catch (error) {
-    console.log(error);
+    logger.error((error as Error).message);
   }
 };

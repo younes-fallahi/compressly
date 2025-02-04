@@ -3,6 +3,7 @@ import { createUser, getUser } from "../services/userService";
 import { MyContext } from "../types/custom-context";
 import { mainKeyboard } from "../keyboards/mainKeyboard.ts";
 import { languageKeyboard } from "../keyboards/languageKeyBoard";
+import logger from "../utils/logger";
 
 export const start = async (ctx: MyContext) => {
   try {
@@ -26,6 +27,6 @@ export const start = async (ctx: MyContext) => {
       }
     }
   } catch (error) {
-    console.log(error);
+    logger.error((error as Error).message);
   }
 };

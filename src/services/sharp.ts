@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
+import logger from "../utils/logger";
 
 export const compressImage = async (
   inputFile: string,
@@ -32,12 +33,12 @@ export const compressImage = async (
     readStream.close();
     writeStream.close();
 
-    console.log(
+    logger.info(
       `image successfully compressed ${path.basename(
         inputFile
       )} => ${path.basename(outputFile)} `
     );
   } catch (error) {
-    console.log(error);
+    logger.error((error as Error).message);
   }
 };

@@ -1,6 +1,7 @@
 import { MyContext } from "../types/custom-context";
 import prisma from "../utils/prisma";
 import { initPolyglot } from "../utils/polyglot";
+import logger from "../utils/logger";
 
 export const createUser = async (
   id: string,
@@ -17,7 +18,7 @@ export const createUser = async (
       createdAt: new Date(),
     },
   });
-  console.log(user);
+  logger.info(`User created successfully : \n ${user}`);
 };
 
 export const getUser = async (id: string) => {

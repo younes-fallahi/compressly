@@ -2,6 +2,7 @@ import { exec } from "child_process";
 import os from "os";
 import { qualityNumberToString } from "../utils/qualityToString";
 import util from "util";
+import logger from "../utils/logger";
 
 const execPromise = util.promisify(exec);
 
@@ -27,11 +28,11 @@ export async function compressPdf(
     const { stdout, stderr } = await execPromise(gsCommand);
 
     if (stderr) {
-      console.warn(`Ghostscript warning: ${stderr}`);
+      logger.warn(`Ghostscript warning: ${stderr}`);
     }
-    console.log(`PDF compressed successfully: ${outputPath}`);
+    logger.info(`PDF compressed successfully: ${outputPath}`);
   } catch (error) {
-    console.error(`Error compressing PDF: ${(error as Error).message}`);
+    logger.error(`Error compressing PDF: ${(error as Error).message}`);
     throw new Error("Failed to compress the PDF.");
   }
 }

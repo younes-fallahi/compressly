@@ -3,6 +3,7 @@ import { Message } from "telegraf/types";
 import { MyContext } from "../types/custom-context";
 import { downloadFile } from "./downloadFile";
 import { qualityCompressionKeyboard } from "../keyboards/qualityCompressionKeyboard";
+import logger from "./logger";
 
 const TEMP_DIR = path.join(__dirname, "../../tmp");
 
@@ -32,8 +33,11 @@ export const saveImage = async (ctx: MyContext) => {
     if (!ctx.polyglot) {
       return;
     }
-    ctx.reply(ctx.polyglot?.t("askForCQlevel"), qualityCompressionKeyboard(ctx));
+    ctx.reply(
+      ctx.polyglot?.t("askForCQlevel"),
+      qualityCompressionKeyboard(ctx)
+    );
   } catch (error) {
-    console.log(error);
+    logger.error((error as Error).message);
   }
 };
