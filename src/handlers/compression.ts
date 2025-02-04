@@ -1,7 +1,6 @@
 import path from "path";
 import fs from "fs";
 import { MyContext } from "../types/custom-context";
-
 import { compressImage } from "../services/sharp";
 import { compressPdf } from "../services/ghostscript";
 
@@ -22,14 +21,17 @@ export const compress = async (ctx: MyContext, quality: number) => {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.jpg`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.jpg`);
       await compressImage(inputPath, outputPath, quality, ".jpg");
+      await ctx.sendPhoto({ source: outputPath });
     } else if (fs.existsSync(path.join(IMAGE_DIR, `input/${chatId}.png`))) {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.png`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.png`);
       await compressImage(inputPath, outputPath, quality, ".png");
+      await ctx.sendDocument({ source: outputPath });
     } else {
       inputPath = path.join(PDF_DIR, `input/${chatId}.pdf`);
       outputPath = path.join(PDF_DIR, `output/${chatId}.pdf`);
       await compressPdf(inputPath, outputPath, quality);
+      await ctx.sendDocument({ source: outputPath });
     }
   } catch (error) {
     console.log(error);
