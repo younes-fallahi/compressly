@@ -2,6 +2,7 @@ import { Message } from "telegraf/types";
 import { MyContext } from "../types/custom-context";
 import path from "path";
 import { downloadFile } from "./downloadFile";
+import { qualityCompressionKeyboard } from "../keyboards/qualityCompressionKeyboard";
 
 const TEMP_DIR = path.join(__dirname, "../../tmp");
 
@@ -38,7 +39,15 @@ export const saveFile = async (ctx: MyContext) => {
       await downloadFile(fileUrl, filePath);
     } else {
       ctx.reply("Unsupported file type");
+      return;
     }
+    if (!ctx.polyglot) {
+      return;
+    }
+    ctx.reply(
+      ctx.polyglot?.t("askForCQlevel"),
+      qualityCompressionKeyboard(ctx)
+    );
   } catch (error) {
     console.log(error);
   }
