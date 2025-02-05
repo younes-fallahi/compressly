@@ -1,6 +1,6 @@
 # Compressly – Telegram Bot for PDF & Image Compression
 
-Compressly is a Telegram bot designed to help users compress PDFs and images efficiently.t utilizes Ghostscript for PDF compression and Sharp for image compression.he bot is built with TypeScript, Telegraf, Prisma, and PostgreSQL for user management.
+Compressly is a Telegram bot designed to help users compress PDFs and images efficiently.It utilizes Ghostscript for PDF compression and Sharp for image compression.The bot is built with TypeScript, Telegraf, Prisma, and PostgreSQL for user management.
 ---
 
 ## Features
