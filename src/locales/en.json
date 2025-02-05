@@ -11,5 +11,6 @@
   "CH-QL": "High Compression , Low Quality",
   "downloading": "Downloading...",
   "compressing": "Compressing...",
-  "uploading": "Uploading..."
+  "uploading": "Uploading...",
+  "return-btn": "return"
 }
