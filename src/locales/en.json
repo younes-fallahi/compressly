@@ -12,5 +12,7 @@
   "downloading": "Downloading...",
   "compressing": "Compressing...",
   "uploading": "Uploading...",
-  "return-btn": "return"
+  "return-btn": "return",
+  "image-caption": "Here is your compressed image:✨ \n @compressly",
+  "pdf-caption": "Here is your compressed pdf:✨ \n @compressly"
 }

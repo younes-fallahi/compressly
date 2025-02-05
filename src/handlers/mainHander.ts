@@ -25,7 +25,10 @@ export const compress = async (ctx: MyContext, quality: number) => {
       await compressImage(inputPath, outputPath, quality, ".jpg");
       await ctx.deleteMessage(compressMessage.message_id);
       const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendPhoto({ source: outputPath });
+      await ctx.sendPhoto(
+        { source: outputPath },
+        { caption: ctx.polyglot.t("image-caption") }
+      );
       await ctx.deleteMessage(uploadingMessage.message_id);
       await fs.promises.unlink(inputPath);
       await fs.promises.unlink(outputPath);
@@ -36,7 +39,10 @@ export const compress = async (ctx: MyContext, quality: number) => {
       await compressImage(inputPath, outputPath, quality, ".png");
       await ctx.deleteMessage(compressMessage.message_id);
       const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendDocument({ source: outputPath });
+      await ctx.sendDocument(
+        { source: outputPath },
+        { caption: ctx.polyglot.t("image-caption") }
+      );
       await ctx.deleteMessage(uploadingMessage.message_id);
       await fs.promises.unlink(inputPath);
       await fs.promises.unlink(outputPath);
@@ -47,7 +53,10 @@ export const compress = async (ctx: MyContext, quality: number) => {
       await compressPdf(inputPath, outputPath, quality);
       await ctx.deleteMessage(compressMessage.message_id);
       const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendDocument({ source: outputPath });
+      await ctx.sendDocument(
+        { source: outputPath },
+        { caption: ctx.polyglot.t("pdf-caption") }
+      );
       await ctx.deleteMessage(uploadingMessage.message_id);
       await fs.promises.unlink(inputPath);
       await fs.promises.unlink(outputPath);

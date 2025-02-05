@@ -12,5 +12,7 @@
   "downloading": "در حال دانلود...",
   "compressing": "در حال فشرده سازی...",
   "uploading": "در حال بارگذاری...",
-  "return-btn": "بازگشت"
+  "return-btn": "بازگشت",
+  "image-caption": "تصویر فشرده شده:✨ \n @compressly",
+  "pdf-caption": "فایل pdf فشرده شده✨ \n @compressly"
 }

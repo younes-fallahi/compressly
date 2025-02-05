@@ -3,7 +3,7 @@ import { MyContext } from "../types/custom-context";
 import { changeLanguage } from "../services/userService";
 import { start } from "../commands/start";
 import { languageKeyboard } from "../keyboards/languageKeyBoard";
-import { compress } from "./compression";
+import { compress } from "./mainHander";
 import logger from "../utils/logger";
 import { returnKeyboard } from "../keyboards/returnKeyboard";
 
