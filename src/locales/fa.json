@@ -14,5 +14,6 @@
   "uploading": "در حال بارگذاری...",
   "return-btn": "بازگشت",
   "image-caption": "تصویر فشرده شده:✨ \n @compressly",
-  "pdf-caption": "فایل pdf فشرده شده✨ \n @compressly"
+  "pdf-caption": "فایل pdf فشرده شده✨ \n @compressly",
+  "inputfileError": "متاسفم فایلی که قبلا فرستادی رو پیدا نکردم . \n لطفا فایل رو دوباره بفرست"
 }

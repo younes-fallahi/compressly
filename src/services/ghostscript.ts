@@ -4,6 +4,7 @@ import { qualityNumberToString } from "../utils/qualityToString";
 import util from "util";
 import logger from "../utils/logger";
 import { MyContext } from "../types/custom-context";
+import fs from "fs";
 
 const execPromise = util.promisify(exec);
 
@@ -13,6 +14,10 @@ export async function compressPdf(
   outputPath: string,
   quality: number
 ): Promise<void> {
+  if (!fs.existsSync(inputPath)) {
+    ctx.reply(ctx.polyglot.t("inputfileError"));
+    return;
+  }
   const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
 
   // ghostscript quality levels : printer (low compression) , ebook (medium compression) , screen (high compression)

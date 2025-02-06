@@ -14,5 +14,6 @@
   "uploading": "Uploading...",
   "return-btn": "return",
   "image-caption": "Here is your compressed image:✨ \n @compressly",
-  "pdf-caption": "Here is your compressed pdf:✨ \n @compressly"
+  "pdf-caption": "Here is your compressed pdf:✨ \n @compressly",
+  "inputfileError": "Sorry, I can’t find it to make the changes. \nPlease resend the file"
 }

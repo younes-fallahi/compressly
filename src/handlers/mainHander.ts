@@ -20,19 +20,25 @@ export const compress = async (ctx: MyContext, quality: number) => {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.jpg`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.jpg`);
       await compressImage(ctx, inputPath, outputPath, quality, ".jpg");
-      await upload(ctx, outputPath, "jpg");
+      if (fs.existsSync(outputPath)) {
+        await upload(ctx, outputPath, "jpg");
+      }
       await cleaner(ctx);
     } else if (fs.existsSync(path.join(IMAGE_DIR, `input/${chatId}.png`))) {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.png`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.png`);
       await compressImage(ctx, inputPath, outputPath, quality, ".png");
-      await upload(ctx, outputPath, "png");
+      if (fs.existsSync(outputPath)) {
+        await upload(ctx, outputPath, "png");
+      }
       await cleaner(ctx);
     } else {
       inputPath = path.join(PDF_DIR, `input/${chatId}.pdf`);
       outputPath = path.join(PDF_DIR, `output/${chatId}.pdf`);
       await compressPdf(ctx, inputPath, outputPath, quality);
-      await upload(ctx, outputPath, "pdf");
+      if (fs.existsSync(outputPath)) {
+        await upload(ctx, outputPath, "pdf");
+      }
       await cleaner(ctx);
     }
   } catch (error) {

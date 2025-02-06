@@ -12,6 +12,11 @@ export const compressImage = async (
   ext: string
 ) => {
   try {
+    if (!fs.existsSync(inputFile)) {
+      ctx.reply(ctx.polyglot.t("inputfileError"));
+      return;
+    }
+
     const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
     const readStream = fs.createReadStream(inputFile);
     const writeStream = fs.createWriteStream(outputFile);
