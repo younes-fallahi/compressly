@@ -6,6 +6,7 @@ import { languageKeyboard } from "../keyboards/languageKeyBoard";
 import { compress } from "./mainHander";
 import logger from "../utils/logger";
 import { returnKeyboard } from "../keyboards/returnKeyboard";
+import { cleaner } from "../utils/cleaner";
 
 export const queryHandler = async (ctx: MyContext) => {
   const callbackQuery = ctx.callbackQuery as CallbackQueryType.DataQuery;
@@ -27,12 +28,15 @@ export const queryHandler = async (ctx: MyContext) => {
           break;
         case "change_language":
           ctx.reply("Please select your language : ", languageKeyboard());
+          await cleaner(ctx);
           break;
         case "compressPdf":
           ctx.reply(ctx.polyglot?.t("askForPdf") || "", returnKeyboard(ctx));
+          await cleaner(ctx);
           break;
         case "compressImage":
           ctx.reply(ctx.polyglot?.t("askForImage") || "", returnKeyboard(ctx));
+          await cleaner(ctx);
           break;
         case "CH-QL":
           await compress(ctx, 25);

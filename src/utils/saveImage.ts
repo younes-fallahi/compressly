@@ -4,11 +4,13 @@ import { MyContext } from "../types/custom-context";
 import { downloadFile } from "./downloadFile";
 import { qualityCompressionKeyboard } from "../keyboards/qualityCompressionKeyboard";
 import logger from "./logger";
+import { cleaner } from "./cleaner";
 
 const TEMP_DIR = path.join(__dirname, "../../tmp");
 
 export const saveImage = async (ctx: MyContext) => {
   try {
+    cleaner(ctx);
     const message = ctx.message as Message.PhotoMessage;
 
     const chatId = ctx.chat?.id.toString();

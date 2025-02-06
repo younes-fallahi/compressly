@@ -3,14 +3,21 @@ import os from "os";
 import { qualityNumberToString } from "../utils/qualityToString";
 import util from "util";
 import logger from "../utils/logger";
+import { MyContext } from "../types/custom-context";
 
 const execPromise = util.promisify(exec);
 
 export async function compressPdf(
+  ctx: MyContext,
   inputPath: string,
   outputPath: string,
   quality: number
 ): Promise<void> {
+  if (!ctx.polyglot) {
+    return;
+  }
+  const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
+
   // ghostscript quality levels : printer (low compression) , ebook (medium compression) , screen (high compression)
   let qualityString = qualityNumberToString(quality);
 
@@ -31,6 +38,7 @@ export async function compressPdf(
       logger.warn(`Ghostscript warning: ${stderr}`);
     }
     logger.info(`PDF compressed successfully: ${outputPath}`);
+    await ctx.deleteMessage(compressMessage.message_id);
   } catch (error) {
     logger.error(`Error compressing PDF: ${(error as Error).message}`);
     throw new Error("Failed to compress the PDF.");

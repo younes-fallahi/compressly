@@ -4,6 +4,8 @@ import { MyContext } from "../types/custom-context";
 import { compressImage } from "../services/sharp";
 import { compressPdf } from "../services/ghostscript";
 import logger from "../utils/logger";
+import { upload } from "../utils/uploader";
+import { cleaner } from "../utils/cleaner";
 
 const PDF_DIR = path.join(__dirname, "../../tmp/pdf");
 const IMAGE_DIR = path.join(__dirname, "../../tmp/image/");
@@ -21,45 +23,21 @@ export const compress = async (ctx: MyContext, quality: number) => {
     if (fs.existsSync(path.join(IMAGE_DIR, `input/${chatId}.jpg`))) {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.jpg`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.jpg`);
-      const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
-      await compressImage(inputPath, outputPath, quality, ".jpg");
-      await ctx.deleteMessage(compressMessage.message_id);
-      const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendPhoto(
-        { source: outputPath },
-        { caption: ctx.polyglot.t("image-caption") }
-      );
-      await ctx.deleteMessage(uploadingMessage.message_id);
-      await fs.promises.unlink(inputPath);
-      await fs.promises.unlink(outputPath);
+      await compressImage(ctx, inputPath, outputPath, quality, ".jpg");
+      await upload(ctx, outputPath, "jpg");
+      await cleaner(ctx);
     } else if (fs.existsSync(path.join(IMAGE_DIR, `input/${chatId}.png`))) {
       inputPath = path.join(IMAGE_DIR, `input/${chatId}.png`);
       outputPath = path.join(IMAGE_DIR, `output/${chatId}.png`);
-      const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
-      await compressImage(inputPath, outputPath, quality, ".png");
-      await ctx.deleteMessage(compressMessage.message_id);
-      const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendDocument(
-        { source: outputPath },
-        { caption: ctx.polyglot.t("image-caption") }
-      );
-      await ctx.deleteMessage(uploadingMessage.message_id);
-      await fs.promises.unlink(inputPath);
-      await fs.promises.unlink(outputPath);
+      await compressImage(ctx, inputPath, outputPath, quality, ".png");
+      await upload(ctx, outputPath, "png");
+      await cleaner(ctx);
     } else {
       inputPath = path.join(PDF_DIR, `input/${chatId}.pdf`);
       outputPath = path.join(PDF_DIR, `output/${chatId}.pdf`);
-      const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
-      await compressPdf(inputPath, outputPath, quality);
-      await ctx.deleteMessage(compressMessage.message_id);
-      const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
-      await ctx.sendDocument(
-        { source: outputPath },
-        { caption: ctx.polyglot.t("pdf-caption") }
-      );
-      await ctx.deleteMessage(uploadingMessage.message_id);
-      await fs.promises.unlink(inputPath);
-      await fs.promises.unlink(outputPath);
+      await compressPdf(ctx, inputPath, outputPath, quality);
+      await upload(ctx, outputPath, "pdf");
+      await cleaner(ctx);
     }
   } catch (error) {
     logger.error((error as Error).message);

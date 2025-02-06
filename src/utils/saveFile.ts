@@ -4,10 +4,12 @@ import path from "path";
 import { downloadFile } from "./downloadFile";
 import { qualityCompressionKeyboard } from "../keyboards/qualityCompressionKeyboard";
 import logger from "./logger";
+import { cleaner } from "./cleaner";
 
 const TEMP_DIR = path.join(__dirname, "../../tmp");
 
 export const saveFile = async (ctx: MyContext) => {
+  cleaner(ctx);
   try {
     const message = ctx.message as Message.DocumentMessage;
     const chatId = ctx.chat?.id.toString();

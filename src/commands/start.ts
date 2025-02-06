@@ -4,6 +4,7 @@ import { MyContext } from "../types/custom-context";
 import { mainKeyboard } from "../keyboards/mainKeyboard.ts";
 import { languageKeyboard } from "../keyboards/languageKeyBoard";
 import logger from "../utils/logger";
+import { cleaner } from "../utils/cleaner";
 
 export const start = async (ctx: MyContext) => {
   try {
@@ -25,6 +26,7 @@ export const start = async (ctx: MyContext) => {
           ctx.reply(ctx.polyglot.t("mainKeyboard"), mainKeyboard(ctx.polyglot));
         }
       }
+      await cleaner(ctx);
     }
   } catch (error) {
     logger.error((error as Error).message);
