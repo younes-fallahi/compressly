@@ -14,13 +14,6 @@ export const saveImage = async (ctx: MyContext) => {
     const message = ctx.message as Message.PhotoMessage;
 
     const chatId = ctx.chat?.id.toString();
-    if (!chatId) {
-      return;
-    }
-
-    if (!ctx.polyglot) {
-      return;
-    }
 
     const photoArray = message.photo;
     if (!photoArray) {

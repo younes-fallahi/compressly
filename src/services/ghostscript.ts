@@ -13,9 +13,6 @@ export async function compressPdf(
   outputPath: string,
   quality: number
 ): Promise<void> {
-  if (!ctx.polyglot) {
-    return;
-  }
   const compressMessage = await ctx.reply(ctx.polyglot.t("compressing"));
 
   // ghostscript quality levels : printer (low compression) , ebook (medium compression) , screen (high compression)

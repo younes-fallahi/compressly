@@ -1,9 +1,6 @@
 import { MyContext } from "../types/custom-context";
 
 export const upload = async (ctx: MyContext, source: string, type: string) => {
-  if (!ctx.polyglot) {
-    return;
-  }
   const uploadingMessage = await ctx.reply(ctx.polyglot.t("uploading"));
   if (type === "jpg") {
     await ctx.sendPhoto(

@@ -12,7 +12,7 @@ export const addPolyglot: MiddlewareFn<MyContext> = async (ctx, next) => {
 
   const user = await getUser(chatId);
 
-  const language = user?.language;
+  const language = user?.language || "en";
 
   ctx.polyglot = initPolyglot(language);
 

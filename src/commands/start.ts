@@ -22,9 +22,7 @@ export const start = async (ctx: MyContext) => {
           languageKeyboard()
         );
       } else {
-        if (ctx.polyglot) {
-          ctx.reply(ctx.polyglot.t("mainKeyboard"), mainKeyboard(ctx.polyglot));
-        }
+        ctx.reply(ctx.polyglot.t("mainKeyboard"), mainKeyboard(ctx.polyglot));
       }
       await cleaner(ctx);
     }

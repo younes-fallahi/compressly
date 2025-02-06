@@ -13,10 +13,6 @@ export const compress = async (ctx: MyContext, quality: number) => {
   try {
     const chatId = ctx.chat?.id.toString();
 
-    if (!ctx.polyglot) {
-      return;
-    }
-
     let inputPath = "";
     let outputPath = "";
 

@@ -28,10 +28,8 @@ export const getUser = async (id: string) => {
 export const changeLanguage = async (ctx: MyContext, language: string) => {
   const id = ctx.chat?.id.toString();
   ctx.polyglot = initPolyglot(language);
-  if (id) {
-    await prisma.user.update({
-      where: { id },
-      data: { language },
-    });
-  }
+  await prisma.user.update({
+    where: { id },
+    data: { language },
+  });
 };
