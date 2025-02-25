@@ -1,0 +1,20 @@
+{
+  "mainKeyboard": "How can I help you?",
+  "pdf-btn": "compress pdf",
+  "img-btn": "compress image",
+  "change-language": "change language",
+  "askForPdf": "Please send your pdf file. \n Maximum size: 50MB",
+  "askForImage": "Please send me an image file. It must be in .jpg (JPEG) or .png format.\n\nPNG images must be sent as files, not as photos.\n If PNG files are sent as images, they will be converted to .jpg automatically by Telegram.",
+  "askForCQlevel": "Please select your compression and quality level : ",
+  "CL-QH": "Low Compression , High Quality",
+  "CM-QM": "Medium Compression , Medium Quality",
+  "CH-QL": "High Compression , Low Quality",
+  "downloading": "Downloading...",
+  "compressing": "Compressing...",
+  "uploading": "Uploading...",
+  "return-btn": "return",
+  "image-caption": "Here is your compressed image:✨ \n @compressly",
+  "pdf-caption": "Here is your compressed pdf:✨ \n @compressly",
+  "inputfileError": "Sorry, I can’t find it to make the changes. \nPlease resend the file",
+  "unhandledError": "unknown error happened \n please use /start for starting over"
+}
